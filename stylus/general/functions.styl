@@ -1,0 +1,80 @@
+transform(args...)
+	-webkit-transform args
+	-moz-transform args
+	-ms-transform args
+	-o-transform args
+	transform args
+	
+transition(args...)
+	-webkit-transition args
+	-moz-transition args
+	-o-transition args
+	-ms-transition args
+	transition args
+	
+flex(flexType, webkit-flexType)
+	display flexType
+	display webkit-flexType
+	justify-content center
+	-webkit-justify-content center
+	align-items center
+	-webkit-align-items center
+    
+border-radius(args...)
+	-webkit-border-radius args
+	-moz-border-radius args
+	-o-border-radius args
+	-ms-border-radius args
+	border-radius args
+
+centerW()
+	left 50%
+	transform translateX(-50%)
+	
+centerH()
+	top 50%
+	transform translateY(-50%)
+
+center()
+	top 50%
+	left 50%
+	transform translate(-50%, -50%)
+
+bgImage()
+	background-position center
+	background-repeat no-repeat
+	background-size cover
+	
+appearance(args...)
+	appearance args
+	-webkit-appearance args
+	-ms-appearance args
+	-moz-appearance args
+	-o-appearance args
+    
+remify(value) {
+   u = unit(value);
+   
+   if (u is 'px') {
+      return unit(value/16, 'rem');
+   } else {
+      return unit(value, u);
+   }
+}
+
+set-font-size(value) {
+   font-size: value;
+   
+   if (value is inherit) {
+      /* do nothing */
+   } else {
+      font-size: remify(value);
+   }
+}
+
+opacity(args...)
+	-ms-filter unquote("progid:DXImageTransform.Microsoft.Alpha(Opacity=" + operate("*", 100, args) + ")")
+	filter unquote("alpha(opacity=" + operate("*", 100, args) + ")")
+	-moz-opacity args
+	-khtml-opacity args
+	opacity args
